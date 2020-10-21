@@ -1,16 +1,18 @@
 package android.eservices.webrequests.presentation.viewmodel;
 
 
+import android.eservices.webrequests.data.api.repository.bookdisplay.BookDisplayRepository;
+
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 public class ViewModelFactory implements ViewModelProvider.Factory {
 
-    //private final BookDisplayRepository bookDisplayRepository;
+    private final BookDisplayRepository bookDisplayRepository;
 
-    /*public ViewModelFactory(BookDisplayRepository bookDisplayRepository) {
+    public ViewModelFactory(BookDisplayRepository bookDisplayRepository) {
         this.bookDisplayRepository = bookDisplayRepository;
-    }*/
+    }
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
