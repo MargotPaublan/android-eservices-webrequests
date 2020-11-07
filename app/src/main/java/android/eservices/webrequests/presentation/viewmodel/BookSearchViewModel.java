@@ -41,7 +41,7 @@ public class BookSearchViewModel extends ViewModel {
     public void searchBooks(String keywords) {
         isDataLoading.postValue(true);
         compositeDisposable.clear();
-        compositeDisposable.add(bookDisplayRepository.searchBooks(keywords)
+        compositeDisposable.add(bookDisplayRepository.getBooksResponse(keywords)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<BookSearchResponse>() {
@@ -49,6 +49,7 @@ public class BookSearchViewModel extends ViewModel {
                     @Override
                     public void onSuccess(BookSearchResponse bookSearchResponse) {
                         books.setValue(bookToViewModelMapper.map(bookSearchResponse.getBookList()));
+                        isDataLoading.postValue(false);
                     }
 
                     @Override

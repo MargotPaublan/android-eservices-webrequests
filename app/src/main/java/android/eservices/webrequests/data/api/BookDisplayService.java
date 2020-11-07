@@ -7,8 +7,14 @@ import io.reactivex.Observable;
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface BookDisplayService {
     @GET("volumes/")
-    Single<BookSearchResponse> searchBooks(@Path("id") String keywords);
+    Single<BookSearchResponse> searchBooks(@Query("q") String keywords, @Query("key") String apikey);
+
+    @GET("volumes/{id}")
+    Single<Book> getBookById(@Path("q") String id, @Query("key") String apikey);
+
+
 }

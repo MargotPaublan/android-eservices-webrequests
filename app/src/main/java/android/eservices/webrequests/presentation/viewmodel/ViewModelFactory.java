@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 public class ViewModelFactory implements ViewModelProvider.Factory {
-
     private final BookDisplayRepository bookDisplayRepository;
 
     public ViewModelFactory(BookDisplayRepository bookDisplayRepository) {
@@ -17,7 +16,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
         if (modelClass.isAssignableFrom(BookSearchViewModel.class)) {
-            return null;//return (T) new BookSearchViewModel(bookDisplayRepository);
+            return (T) new BookSearchViewModel(bookDisplayRepository);
         }
         //Handle favorite view model case
         throw new IllegalArgumentException("Unknown ViewModel class");

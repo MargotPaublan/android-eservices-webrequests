@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import io.reactivex.Observer;
+
 
 
 /*
@@ -70,7 +71,7 @@ public class SearchFragment extends Fragment implements BookActionInterface {
         bookSearchViewModel = new ViewModelProvider(requireActivity(), FakeDependencyInjection.getViewModelFactory()).get(BookSearchViewModel.class);
         //System.out.println("FVVM is " + bookFavoriteViewModel);
 
-        bookSearchViewModel.getBooks().observe(getViewLifecycleOwner(), new Observer<List<BookViewItem >>() {
+        bookSearchViewModel.getBooks().observe(getViewLifecycleOwner(), new Observer<List<BookViewItem>>() {
             @Override
             public void onChanged(List<BookViewItem> bookItemViewModelList) {
                 bookAdapter.bindViewModels(bookItemViewModelList);

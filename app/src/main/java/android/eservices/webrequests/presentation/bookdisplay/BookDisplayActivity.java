@@ -25,7 +25,7 @@ public class BookDisplayActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.tab_viewpager);
 
         final SearchFragment searchFragment = SearchFragment.newInstance();
-        final FavoriteFragment fragmentTwo = FavoriteFragment.newInstance();
+        final FavoriteFragment favoriteFragment = FavoriteFragment.newInstance();
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -33,7 +33,7 @@ public class BookDisplayActivity extends AppCompatActivity {
                 if (position == 0) {
                     return searchFragment;
                 }
-                return fragmentTwo;
+                return favoriteFragment;
             }
 
             @Override
