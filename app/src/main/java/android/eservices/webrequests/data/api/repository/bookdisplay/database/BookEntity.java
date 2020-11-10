@@ -1,12 +1,13 @@
 package android.eservices.webrequests.data.api.repository.bookdisplay.database;
 
+import android.eservices.webrequests.data.api.model.BookInfo;
 import android.eservices.webrequests.data.api.model.ImageLinks;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "booksTable")
 public class BookEntity {
     @PrimaryKey
     public int id;

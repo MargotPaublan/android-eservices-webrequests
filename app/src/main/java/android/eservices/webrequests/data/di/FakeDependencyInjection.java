@@ -2,8 +2,10 @@ package android.eservices.webrequests.data.di;
 
 import android.content.Context;
 import android.eservices.webrequests.data.api.BookDisplayService;
+import android.eservices.webrequests.data.api.repository.bookdisplay.BookDisplayLocalDataSource;
 import android.eservices.webrequests.data.api.repository.bookdisplay.BookDisplayRemoteDataSource;
 import android.eservices.webrequests.data.api.repository.bookdisplay.BookDisplayRepository;
+import android.eservices.webrequests.data.api.repository.bookdisplay.database.BooksDatabase;
 import android.eservices.webrequests.presentation.viewmodel.ViewModelFactory;
 
 import androidx.room.Room;
@@ -31,7 +33,7 @@ public class FakeDependencyInjection {
     private static Retrofit retrofit;
     private static Gson gson;
     private static BookDisplayRepository bookDisplayRepository;
-    //private static BookDatabase bookDatabase;
+    private static BooksDatabase bookDatabase;
     private static Context applicationContext;
     private static ViewModelFactory viewModelFactory;
 
@@ -46,7 +48,7 @@ public class FakeDependencyInjection {
     public static BookDisplayRepository getBookDisplayRepository() {
         if (bookDisplayRepository == null) {
             bookDisplayRepository = new BookDisplayRepository(
-                    //new BookDisplayLocalDataSource(getBookDatabase()),
+                    new BookDisplayLocalDataSource(getBookDatabase()),
                     new BookDisplayRemoteDataSource(getBookDisplayService())//,
                     //new BookToBookEntityMapper()
             );
@@ -91,11 +93,11 @@ public class FakeDependencyInjection {
         applicationContext = context;
     }
 
-    /*public static BookDatabase getBookDatabase() {
+    public static BooksDatabase getBookDatabase() {
         if (bookDatabase == null) {
             bookDatabase = Room.databaseBuilder(applicationContext,
-                    BookDatabase.class, "book-database").build();
+                    BooksDatabase.class, "book-database").build();
         }
         return bookDatabase;
-    }*/
+    }
 }

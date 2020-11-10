@@ -34,19 +34,19 @@ Ce TP est découpé en deux partie qui se suivent, faites d'abord l'une puis l'a
 Premier objectif, pouvoir récupérer les livres correspondant à la recherche de l'utilisateur.
 Pour ça tout est à mettre en place :
 - [x] Préparer l'architecture
-- [ ] Créer l'interface Retrofit et mettre en place la méthode permettant de fournir une instance du service dans notre fausse DI.
-- [ ] Créer les differents Repository et DataSources avec les bonnes méthodes qui seront appelées depuis le ViewModel.
-- [ ] Corriger le ViewModel pour gérer la recherche, et implémenter son fonctionnement dans le Fragment. Gérer la création du ViewModel.
-- [ ] Préparer le mapper qui prépare les objets reçus dans le ViewModel à être affichés dans la vue.
-- [ ] Initialiser et appeler le ViewModel depuis la vue.
+- [x] Créer l'interface Retrofit et mettre en place la méthode permettant de fournir une instance du service dans notre fausse DI.
+- [x] Créer les differents Repository et DataSources avec les bonnes méthodes qui seront appelées depuis le ViewModel.
+- [x] Corriger le ViewModel pour gérer la recherche, et implémenter son fonctionnement dans le Fragment. Gérer la création du ViewModel.
+- [x] Préparer le mapper qui prépare les objets reçus dans le ViewModel à être affichés dans la vue.
+- [x] Initialiser et appeler le ViewModel depuis la vue.
 
 ###### Deuxième partie : les favoris
 Maintenant que l'on sait faire des recherches, on souhaite pouvoir gérer les favoris. 
 On peut ajouter et retirer des favoris facilement.
 Ces favoris vont être stockés dans une base de données Android Room.
 Pour faire ça il va falloir :
-- [ ] Mettre en place la BDD, l'entité livre, et préparer la méthode qui permet de fournir une instance Singleton de la BDD.
-- [ ] Mettre à jour la partie Repository en créant les méthodes de récupération et suppression de favoris.
+- [x] Mettre en place la BDD, l'entité livre, et préparer la méthode qui permet de fournir une instance Singleton de la BDD.
+- [x] Mettre à jour la partie Repository en créant les méthodes de récupération et suppression de favoris.
 - [ ] Ecrire l'algorithme qui permet de transformer les résultats de la recherche en indiquant ceux qui sont déjà en favoris.
 - [ ] Créer le ViewModel pour la partie Favoris et le lier à la vue.
 - [ ] Tester tout ça, utiliser [Stetho](http://facebook.github.io/stetho/) 

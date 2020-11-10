@@ -5,16 +5,17 @@ import android.eservices.webrequests.data.api.repository.bookdisplay.database.Bo
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class BookDisplayRepository {
     BookDisplayRemoteDataSource bookDisplayRemoteDataSource;
-    //BookDisplayLocalDataSource bookDisplayLocalDataSource;
+    BookDisplayLocalDataSource bookDisplayLocalDataSource;
 
-    public BookDisplayRepository(BookDisplayRemoteDataSource bookDisplayRemoteDataSource/*, BookDisplayLocalDataSource bookDisplayLocalDataSource*/) {
+    public BookDisplayRepository(BookDisplayLocalDataSource bookDisplayLocalDataSource, BookDisplayRemoteDataSource bookDisplayRemoteDataSource) {
         this.bookDisplayRemoteDataSource = bookDisplayRemoteDataSource;
-        //this.bookDisplayLocalDataSource = bookDisplayLocalDataSource;
+        this.bookDisplayLocalDataSource = bookDisplayLocalDataSource;
     }
 
 
@@ -22,7 +23,16 @@ public class BookDisplayRepository {
         return bookDisplayRemoteDataSource.searchBooks(keywords);
     }
 
-    /*public Flowable<List<BookEntity> getFavoriteBooksResponse() {
-        return bookDisplayLocalDataSource.getFavoriteBooks;
-    }*/
+    public Flowable<List<BookEntity>> getFavoriteBooksResponse() {
+        return bookDisplayLocalDataSource.getFavoriteBooks();
+    }
+
+    public Completable insertFavBook(BookEntity bookEntity) {
+        return bookDisplayLocalDataSource.insertBook(bookEntity);
+    }
+
+    public Completable deleteFavBook(BookEntity bookEntity) {
+        return bookDisplayLocalDataSource.deleteBook(bookEntity);
+    }
+
 }

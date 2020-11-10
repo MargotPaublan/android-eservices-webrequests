@@ -7,20 +7,21 @@ import androidx.room.Query;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Flowable;
+import io.reactivex.Single;
+
 @Dao
-public interface BookDao {/*
-    @Query("SELECT * FROM favoriteBooks")
-    List<BookEntity> getAllFavoriteBooks();
+public interface BookDao {
+    @Query("SELECT * FROM booksTable")
+    Flowable<List<BookEntity>> getFavoriteBooks();
 
-    @Query("SELECT * FROM favoriteBooks WHERE title LIKE :title")
-    BookEntity findByName(String title);
-
-    @Insert
-    void insertAll(BookEntity... books);
+    @Query("SELECT * FROM booksTable WHERE booksTable.title = :name")
+    Single<BookEntity> getBookByName(String name);
 
     @Insert
-    void insertBook(BookEntity book);
+    Completable insertBook(BookEntity book);
 
     @Delete
-    void delete(BookEntity book);*/
+    Completable deleteBook(BookEntity book);
 }
