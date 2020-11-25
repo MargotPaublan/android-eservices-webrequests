@@ -1,8 +1,8 @@
 package android.eservices.webrequests.data.api.repository.bookdisplay;
 
-import android.eservices.webrequests.data.api.repository.bookdisplay.database.BookDao;
-import android.eservices.webrequests.data.api.repository.bookdisplay.database.BookEntity;
-import android.eservices.webrequests.data.api.repository.bookdisplay.database.BooksDatabase;
+import android.eservices.webrequests.data.database.BookDao;
+import android.eservices.webrequests.data.database.BookEntity;
+import android.eservices.webrequests.data.database.BooksDatabase;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class BookDisplayLocalDataSource {
+
+
     private BooksDatabase booksDatabase;
     private BookDao bookDao;
 
@@ -23,16 +25,17 @@ public class BookDisplayLocalDataSource {
         return this.bookDao.getFavoriteBooks();
     }
 
-    public Single<BookEntity> getFavBookByName(String name) {
-        return this.bookDao.getBookByName(name);
-    }
 
     public Completable insertBook(BookEntity bookEntity) {
         return this.bookDao.insertBook(bookEntity);
     }
 
-    public Completable deleteBook(BookEntity bookEntity) {
-        return this.bookDao.deleteBook(bookEntity);
+    public Completable deleteBook(String id) {
+        return this.bookDao.deleteBook(id);
+    }
+
+    public BooksDatabase getBooksDatabase() {
+        return booksDatabase;
     }
 }
 

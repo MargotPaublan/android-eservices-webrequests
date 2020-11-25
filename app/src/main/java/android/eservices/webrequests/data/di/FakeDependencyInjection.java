@@ -5,7 +5,7 @@ import android.eservices.webrequests.data.api.BookDisplayService;
 import android.eservices.webrequests.data.api.repository.bookdisplay.BookDisplayLocalDataSource;
 import android.eservices.webrequests.data.api.repository.bookdisplay.BookDisplayRemoteDataSource;
 import android.eservices.webrequests.data.api.repository.bookdisplay.BookDisplayRepository;
-import android.eservices.webrequests.data.api.repository.bookdisplay.database.BooksDatabase;
+import android.eservices.webrequests.data.database.BooksDatabase;
 import android.eservices.webrequests.presentation.viewmodel.ViewModelFactory;
 
 import androidx.room.Room;

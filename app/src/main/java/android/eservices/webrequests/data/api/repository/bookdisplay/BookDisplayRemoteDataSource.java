@@ -14,7 +14,7 @@ public class BookDisplayRemoteDataSource {
         this.bookDisplayService = bookDisplayService;
     }
 
-    public Single<Book> getBook(String id) {
+    public Single<Book> getBookDetails(String id) {
         return this.bookDisplayService.getBookById(id, BookApplication.API_KEY);
     }
 

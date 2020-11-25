@@ -6,6 +6,30 @@ import java.util.List;
 
 public class BookInfo {
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setImageLinks(ImageLinks imageLinks) {
+        this.imageLinks = imageLinks;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public void setAuthorList(List<String> authorList) {
+        this.authorList = authorList;
+    }
+
     private String title;
     private ImageLinks imageLinks;
     private String description;

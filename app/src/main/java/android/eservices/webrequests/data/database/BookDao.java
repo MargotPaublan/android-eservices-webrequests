@@ -1,4 +1,4 @@
-package android.eservices.webrequests.data.api.repository.bookdisplay.database;
+package android.eservices.webrequests.data.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -16,12 +16,9 @@ public interface BookDao {
     @Query("SELECT * FROM booksTable")
     Flowable<List<BookEntity>> getFavoriteBooks();
 
-    @Query("SELECT * FROM booksTable WHERE booksTable.title = :name")
-    Single<BookEntity> getBookByName(String name);
-
     @Insert
     Completable insertBook(BookEntity book);
 
-    @Delete
-    Completable deleteBook(BookEntity book);
+    @Query("DELETE FROM booksTable WHERE id = :id")
+    Completable deleteBook(String id);
 }

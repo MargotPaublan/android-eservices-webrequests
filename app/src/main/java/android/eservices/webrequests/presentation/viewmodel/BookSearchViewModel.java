@@ -48,14 +48,15 @@ public class BookSearchViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(BookSearchResponse bookSearchResponse) {
+                        isDataLoading.setValue(false);
                         books.setValue(bookToViewModelMapper.map(bookSearchResponse.getBookList()));
-                        isDataLoading.postValue(false);
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         // handle the error case
                         //Yet, do not do nothing in this app
+                        isDataLoading.setValue(false);
                         System.out.println(e.toString());
                     }
                 }));

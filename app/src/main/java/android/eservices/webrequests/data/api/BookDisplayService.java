@@ -13,8 +13,8 @@ public interface BookDisplayService {
     @GET("volumes/")
     Single<BookSearchResponse> searchBooks(@Query("q") String keywords, @Query("key") String apikey);
 
-    @GET("volumes/{id}")
-    Single<Book> getBookById(@Path("q") String id, @Query("key") String apikey);
+    @GET("volumes/{bookId}")
+    Single<Book> getBookById(@Path("bookId") String id, @Query("key") String apikey);
 
 
 }

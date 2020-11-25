@@ -5,6 +5,7 @@ import android.eservices.webrequests.data.di.FakeDependencyInjection;
 import android.eservices.webrequests.presentation.bookdisplay.search.adapter.BookActionInterface;
 import android.eservices.webrequests.presentation.bookdisplay.search.adapter.BookAdapter;
 import android.eservices.webrequests.presentation.bookdisplay.search.adapter.BookViewItem;
+import android.eservices.webrequests.presentation.viewmodel.BookFavoriteViewModel;
 import android.eservices.webrequests.presentation.viewmodel.BookSearchViewModel;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class SearchFragment extends Fragment implements BookActionInterface {
     private BookAdapter bookAdapter;
     private ProgressBar progressBar;
     private BookSearchViewModel bookSearchViewModel;
-    //private BookFavoriteViewModel bookFavoriteViewModel;
+    private BookFavoriteViewModel bookFavoriteViewModel;
 
     private SearchFragment() {
     }
@@ -69,8 +70,10 @@ public class SearchFragment extends Fragment implements BookActionInterface {
 
     private void registerViewModels() {
         bookSearchViewModel = new ViewModelProvider(requireActivity(), FakeDependencyInjection.getViewModelFactory()).get(BookSearchViewModel.class);
+        bookFavoriteViewModel = new ViewModelProvider(requireActivity(), FakeDependencyInjection.getViewModelFactory()).get(BookFavoriteViewModel.class);
         //System.out.println("FVVM is " + bookFavoriteViewModel);
 
+        //ici ?
         bookSearchViewModel.getBooks().observe(getViewLifecycleOwner(), new Observer<List<BookViewItem>>() {
             @Override
             public void onChanged(List<BookViewItem> bookItemViewModelList) {
@@ -132,6 +135,12 @@ public class SearchFragment extends Fragment implements BookActionInterface {
     @Override
     public void onFavoriteToggle(String bookId, boolean isFavorite) {
         //Handle add and deletion to favorites
+        if (isFavorite) {
+            bookFavoriteViewModel.addBookToFavorite(bookId);
+        }
+        else {
+            bookFavoriteViewModel.removeBookFromFavorite(bookId);
+        }
     }
 
 }

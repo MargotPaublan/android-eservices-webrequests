@@ -6,6 +6,7 @@ import android.eservices.webrequests.presentation.bookdisplay.favorite.adapter.B
 import android.eservices.webrequests.presentation.bookdisplay.favorite.adapter.BookDetailAdapter;
 import android.eservices.webrequests.presentation.bookdisplay.favorite.adapter.BookDetailViewItem;
 //import android.eservices.webrequests.presentation.viewmodel.BookFavoriteViewModel;
+import android.eservices.webrequests.presentation.viewmodel.BookFavoriteViewModel;
 import android.eservices.webrequests.presentation.viewmodel.Event;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ public class FavoriteFragment extends Fragment implements BookDetailActionInterf
     private View rootView;
     private RecyclerView recyclerView;
     private BookDetailAdapter bookAdapter;
-    //private BookFavoriteViewModel bookFavoriteViewModel;
+    private BookFavoriteViewModel bookFavoriteViewModel;
 
     private FavoriteFragment() {
     }
@@ -49,10 +50,10 @@ public class FavoriteFragment extends Fragment implements BookDetailActionInterf
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupRecyclerView();
-        //registerViewModels();
+        registerViewModels();
     }
 
-    /*private void registerViewModels() {
+    private void registerViewModels() {
         bookFavoriteViewModel = new ViewModelProvider(requireActivity(), FakeDependencyInjection.getViewModelFactory()).get(BookFavoriteViewModel.class);
         System.out.println("FVVM is " + bookFavoriteViewModel);
 
@@ -76,7 +77,7 @@ public class FavoriteFragment extends Fragment implements BookDetailActionInterf
                 //Do nothing
             }
         });
-    }*/
+    }
 
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
@@ -87,7 +88,7 @@ public class FavoriteFragment extends Fragment implements BookDetailActionInterf
 
     @Override
     public void onRemoveFavorite(String bookId) {
-        //bookFavoriteViewModel.removeBookFromFavorites(bookId);
+        bookFavoriteViewModel.removeBookFromFavorite(bookId);
         System.out.println("Remove book " + bookId);
     }
 

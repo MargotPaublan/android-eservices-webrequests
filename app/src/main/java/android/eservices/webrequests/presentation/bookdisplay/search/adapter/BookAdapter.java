@@ -49,7 +49,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             });
         }
 
-        void bind(BookViewItem bookViewItem) {
+        void bind(final BookViewItem bookViewItem) {
             this.bookViewItem = bookViewItem;
             titleTextView.setText(bookViewItem.getBookTitle());
             authorsTextView.setText(bookViewItem.getBookAuthors());
@@ -60,7 +60,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .circleCrop()
                     .into(iconImageView);
-
         }
 
     }

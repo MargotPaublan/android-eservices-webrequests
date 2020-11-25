@@ -13,12 +13,15 @@ public class BookToViewModelMapper {
         BookViewItem bookViewItem = new BookViewItem();
         bookViewItem.setBookTitle(book.getVolumeInfo().getTitle());
         bookViewItem.setBookId(book.getId());
+
         if (book.getVolumeInfo().getImageLinks() != null) {
             bookViewItem.setIconUrl(book.getVolumeInfo().getImageLinks().getThumbnail());
         }
+
         bookViewItem.setFavorite(book.isFavorite());
+
         if (book.getVolumeInfo().getAuthorList() == null) {
-            bookViewItem.setBookAuthors("N.C.");
+            bookViewItem.setBookAuthors("vide");
         } else {
             bookViewItem.setBookAuthors(TextUtils.join(", ", book.getVolumeInfo().getAuthorList()));
         }

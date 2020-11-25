@@ -1,7 +1,6 @@
-package android.eservices.webrequests.data.api.repository.bookdisplay.database;
+package android.eservices.webrequests.data.database;
 
 import androidx.room.Database;
-import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = {BookEntity.class}, version = 1)
